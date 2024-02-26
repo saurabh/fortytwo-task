@@ -7,11 +7,29 @@ import { getWalletBalances } from './api/wallet';
 import type { Balance } from './api/wallet';
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [address, setAddress] = useState<string>('');
   const [assets, setAssets] = useState<Balance[]>([]);
   
   const handleFormSubmit = async (address: string) => {
+    setIsLoading(true);
+    setAddress(address);
     const fetchedAssets = await getWalletBalances(address);
     setAssets(fetchedAssets);
+    setIsLoading(false);
+  };
+
+  const handleRefresh = async () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      getWalletBalances(address).then(fetchedAssets => {
+        setAssets(fetchedAssets);
+        setIsLoading(false);
+      }).catch(error => {
+        console.error(error);
+        setIsLoading(false);
+      });
+    }, 1000);
   };
 
   return (
@@ -29,7 +47,7 @@ export default function Home() {
           className='container mx-auto px-4'
         >
           <WalletForm onSubmitAddress={handleFormSubmit} />
-          { assets.length > 0 && <Dashboard assets={assets} />}
+          {assets.length > 0 && <Dashboard assets={assets} onRefresh={handleRefresh} isLoading={isLoading} />}
         </motion.div>
       </main>
     </>

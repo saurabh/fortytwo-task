@@ -22,6 +22,13 @@ const WalletForm: React.FC<WalletFormProps> = ({ onSubmitAddress }) => {
       let ensResolvedName = '';
       if (input.endsWith('.eth')) {
         const resolvedENS = await fetchEnsAddress({ name: input });
+        if (!resolvedENS) {
+            toast('Could not resolve ENS name to address. Please enter a valid address.');
+            setInput('');
+            setResolved('');
+            setIsLoading(false);
+            return;
+          }
         resolvedValue = String(resolvedENS);
         ensResolvedName = input;
       } else {

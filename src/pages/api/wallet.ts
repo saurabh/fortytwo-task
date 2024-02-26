@@ -8,7 +8,7 @@ export interface Balance {
 }
 
 // const chain = ChainKeys.ETHEREUM
-const responses_list: Balance[] = []
+// const responses_list: Balance[] = []
 const API_KEY = 'YOUR API KEY'
 
 // MockPulsarSDK instead of the real PulsarSDK
@@ -37,9 +37,15 @@ class MockPulsarSDK {
 const sdk = new MockPulsarSDK(API_KEY)
 
 export async function getWalletBalances(address: string) {
-    const balances = sdk.balances.getWalletBalances(address)
-    for await (const balance of balances) {
-        responses_list.push(balance)
+    const balances = sdk.balances.getWalletBalances(address);
+    const tempResponsesList: Balance[] = []; // Temporary list to hold balances
+    try {
+        for await (const balance of balances) {
+            tempResponsesList.push(balance);
+        }
+    } catch (error) {
+        console.error('Failed to get wallet balances:', error);
+        throw new Error('Error fetching wallet balances');
     }
-    return responses_list;
+    return tempResponsesList; // Return the local list
 }

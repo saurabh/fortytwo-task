@@ -1,29 +1,41 @@
-# Create T3 App
+# Coding Challenge Overview
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+## Objective
+Build a React application that allows users to enter a cryptocurrency wallet address. The application should then use Pulsar's API to fetch and display a dashboard of all the assets held by that wallet address, along with their current prices and balances.
 
-## What's next? How do I make an app with this?
+## Key Features to Implement
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+### User Input for Wallet Address
+- Create a user interface that allows the user to input or paste a cryptocurrency wallet address.
+- Validate the input to ensure it conforms to standard wallet address formats.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+### Fetching Data
+- Use Pulsar's API to fetch the assets held by the entered wallet address. You may need to simulate API requests if you don't have immediate access to Pulsar's API or if you're setting this challenge without the actual API keys. API link: [Pulsar's API](https://app.pulsar.finance/api-early-access)
+- Implement error handling for the API request to manage scenarios where the wallet address is invalid, the API service is down, or the wallet address has no assets.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+### Displaying Data on Dashboard
+- Dynamically display the fetched data in a user-friendly dashboard. The dashboard should list each asset held in the wallet, showing the current balance and price.
+- Ensure the data presentation is clear and accessible, possibly using tables or card layouts.
 
-## Learn More
+### Refreshing Data
+- Provide an option to refresh the data, either through a manual refresh button or by automatically refreshing the data at a set interval.
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+### Responsive Design
+- Ensure the application is responsive and provides a consistent user experience across different devices and screen sizes.
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+## Technical Requirements
+- The application should be developed using React.js.
+- State management can be handled with React's built-in hooks (e.g., `useState`, `useEffect`) or any state management library of choice if deemed necessary.
+- Styling can be accomplished with CSS, SASS, or any CSS-in-JS library (e.g., styled-components, emotion).
+- Ensure code is clean, well-commented, and follows best practices for readability and maintainability.
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+## Deliverables
+- Source code for the React application.
+- Instructions on how to run the application locally.
+- Any assumptions made during the development process or notes on future improvements if given more time.
 
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+## Evaluation Criteria
+- **Functionality**: The application correctly fetches and displays the data based on the entered wallet address.
+- **Code Quality**: The code is clean, well-organized, and follows best practices.
+- **Error Handling**: The application gracefully handles and displays errors from the API or user input.
+- **User Interface**: The application has a user-friendly interface that is responsive and accessible.
