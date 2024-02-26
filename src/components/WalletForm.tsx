@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { fetchEnsAddress, fetchEnsName } from '@wagmi/core';
 import { motion } from 'framer-motion';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 interface WalletFormProps {
   onSubmitAddress: (address: string) => void;
@@ -29,16 +31,21 @@ const WalletForm: React.FC<WalletFormProps> = ({ onSubmitAddress }) => {
       }
       setResolved(resolvedValue);
       setENSName(ensResolvedName); 
-      setIsLoading(false);
       onSubmitAddress(resolvedValue); 
     } catch (error) {
       console.error('Error resolving address or ENS name:', error);
-      // Handle the error
+      setInput('');
+      setResolved('');
+      setENSName('');
+      toast('Invalid Address: Please enter a valid address.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="flex flex-col items-center justify-center w-full">
+        <ToastContainer />
         {isLoading ? (
             <motion.div
                 initial={{ opacity: 0 }}

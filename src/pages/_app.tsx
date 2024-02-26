@@ -2,6 +2,7 @@ import { type AppType } from "next/dist/shared/lib/utils";
 import Web3Provider from "~/providers/Web3";
 
 import "~/styles/globals.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (

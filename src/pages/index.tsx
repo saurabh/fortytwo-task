@@ -31,10 +31,6 @@ export default function Home() {
           <WalletForm onSubmitAddress={handleFormSubmit} />
           { assets.length > 0 && <Dashboard assets={assets} />}
         </motion.div>
-        {/* <div className='container mx-auto px-4'>
-          <WalletForm onSubmitAddress={handleFormSubmit} />
-          { assets.length > 0 && <Dashboard assets={assets} />}
-        </div> */}
       </main>
     </>
   );

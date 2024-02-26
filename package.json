@@ -18,6 +18,7 @@
     "pulsar_sdk_js": "^1.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-toastify": "^10.0.4",
     "wagmi": "^1.4.12",
     "zod": "^3.22.4"
   },
