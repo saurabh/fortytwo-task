@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
+import { motion } from 'framer-motion';
 import WalletForm from '../components/WalletForm';
 import Dashboard from '../components/Dashboard';
 import { getWalletBalances } from './api/wallet';
@@ -21,10 +22,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-        <div className='container mx-auto px-4'>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className='container mx-auto px-4'
+        >
           <WalletForm onSubmitAddress={handleFormSubmit} />
           { assets.length > 0 && <Dashboard assets={assets} />}
-        </div>
+        </motion.div>
+        {/* <div className='container mx-auto px-4'>
+          <WalletForm onSubmitAddress={handleFormSubmit} />
+          { assets.length > 0 && <Dashboard assets={assets} />}
+        </div> */}
       </main>
     </>
   );

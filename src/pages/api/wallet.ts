@@ -17,6 +17,7 @@ class MockPulsarSDK {
 
   balances = {
     getWalletBalances: async function* (walletAddress: string) {
+      console.log('walletAddress', walletAddress)
       // Mock data simulating API response
       const mockBalances: Balance[] = [
         { token: 'ETH', tokenPrice: '3000', amount: '5' },
