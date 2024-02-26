@@ -1,3 +1,5 @@
+# Built with Next.js, Tailwind, DaisyUI, Wagmi (for ENS resolution), Framer Motion and react-toastify
+
 # Coding Challenge Overview
 
 ## Objective
